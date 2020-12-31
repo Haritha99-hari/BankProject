@@ -8,10 +8,10 @@ class Bank {
         return accountDetails
 
     }
-    static login = () => {
+    static login = () => {   //made static to call method in class
         let uname = document.querySelector("#username").value //userone
         let pwd = document.querySelector("#password").value //test
-        let dataset = Bank.getData()
+        let dataset = Bank.getData()  //used dataset to get informtn in getData() method
         /*
         {
               userone: { acno: 1000, name: "ajay", bal: 10000, username: "userone", password: "testuser" },
@@ -42,7 +42,7 @@ class Bank {
     static deposit = () => {
         let uname = document.querySelector("#uname").value
         let pwd = document.querySelector("#pwd").value
-        let amt = Number(document.querySelector("#amt").value)
+        let amt = Number(document.querySelector("#amt").value) // to get as integer value
         let dataset = Bank.getData()
         if (uname in dataset) {
             if (dataset[uname].password == pwd) {
