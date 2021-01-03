@@ -106,23 +106,43 @@ class Bank {
         let uname = document.querySelector("#uname").value
         let pwd = document.querySelector("#pwd").value
         let amt = Number(document.querySelector("#amt").value)
+        let us = Bank.authenticateUser(uname,pwd)
         let dataset = Bank.getData()
-        if (uname in dataset) {
-            if (dataset[uname].password == pwd) {
-                if (dataset[uname].balance >= amt) {
-                    dataset[uname].balance -= amt
-                    alert("your account debited with amount" + amt + "aval bal=" + dataset[uname].balance)
-                }
-                else {
-                    alert("insufficient balance")
-                }
+        if (us == 1) {
+            if (dataset[uname].balance >= amt) {
+                dataset[uname].balance -= amt
+                alert("your account debited with amount " + amt + " aval bal= " + dataset[uname].balance)
             }
             else {
-                alert("incorrect password")
+                alert("insufficient balance")
             }
         }
-        else {
+        else if (us == 0) {
+            alert("incorrect password")
+
+        }
+        else if (us == -1) {
             alert("no user exist with provided username")
         }
     }
 }
+
+     // let dataset = Bank.getData()
+        // if (uname in dataset) {
+        //     if (dataset[uname].password == pwd) {
+        //         if (dataset[uname].balance >= amt) {
+        //             dataset[uname].balance -= amt
+        //             alert("your account debited with amount" + amt + "aval bal=" + dataset[uname].balance)
+        //         }
+        //         else {
+        //             alert("insufficient balance")
+        //         }
+        //     }
+        //     else {
+        //         alert("incorrect password")
+        //     }
+        // }
+        // else {
+        //     alert("no user exist with provided username")
+        // }
+
